@@ -1,0 +1,5 @@
+sentence-transformers
+transformers==4.57.6
+tqdm
+torch
+vllm
