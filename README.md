@@ -1,4 +1,4 @@
-# Do Not Waste Your Rollouts: Recycling Search Experience \\ for Efficient Test-Time Scaling
+# Do Not Waste Your Rollouts: Recycling Search Experience for Efficient Test-Time Scaling
 
 ## Project Structure
 
