@@ -240,7 +240,6 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
     pass_at_k_sums = {k: 0.0 for k in k_values}
     
     total_null_text = 0
-    majority_vote_correct = 0
     
     for index, data in results.items():
         details = data.get('verification_details', [])
@@ -251,8 +250,6 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
         total_null_text += null_text_count
         
         accuracy = correct / total if total > 0 else 0.0
-        if accuracy > 0.5:
-            majority_vote_correct += 1
         
         current_pass_at_k = {}
         for k in k_values:
@@ -276,7 +273,6 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
     metrics = {
         'total_problems': num_problems,
         'total_null_text': total_null_text,
-        'majority_vote_accuracy': majority_vote_correct / num_problems if num_problems > 0 else 0.0,
         'pass_at_k': {f'pass@{k}': (pass_at_k_sums[k] / num_problems if num_problems > 0 else 0.0) for k in k_values},
         'problem_stats': sorted(problem_stats, key=lambda x: x['index'])
     }
@@ -292,7 +288,6 @@ def print_results(metrics: Dict):
     print("="*60)
     print(f"Total Problems: {metrics['total_problems']}")
     print(f"Total Null Text: {metrics['total_null_text']}")
-    print(f"Majority Vote Accuracy (Pass@1 > 0.5): {metrics['majority_vote_accuracy']:.2%}")
     
     print("-" * 60)
     print("Overall Pass@k:")
@@ -368,7 +363,6 @@ def main():
                     'Total_Completions': '',
                     'Correct_Count': '',
                     'Null_Text_Count': metrics['total_null_text'],
-                    'Accuracy': metrics['majority_vote_accuracy'],
                 }
                 for k, v in metrics['pass_at_k'].items():
                     summary_row[k] = v
