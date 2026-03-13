@@ -24,7 +24,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-EXPERIENCE_DISTILLATION_SYSTEM_PROMPT = """"You are a Strategic Reasoning Distiller. Your goal is to construct a "Experience Bank" that will serve as the foundation for the student's next problem-solving iteration by extracting two specific lists:
+EXPERIENCE_DISTILLATION_SYSTEM_PROMPT = """You are a Strategic Reasoning Distiller. Your goal is to construct a "Experience Bank" that will serve as the foundation for the student's next problem-solving iteration by extracting two specific lists:
 1.  **Verified Propositions:** Irrefutable truths and intermediate conclusions derived correctly.
 2.  **Critical Pitfalls:** Logical fallacies, dangerous operations, and dead ends to avoid.
 The student will explicitly reference this data: 
@@ -40,13 +40,13 @@ You have **NO access** to the golden answer. You must **NOT** make any assumptio
 
 **Strict Inclusion Rules (Filter Aggressively):**
 1.  **Independent Verification:** You must be able to independently verify the statement is true based on standard mathematical axioms or strictly derived from the previous valid steps.
-2.  **Explicit Conditions:** Every proposition MUST state its necessary conditions (e.g., "If $x \\neq 0$, then...", "For $a > 0$, implies..."). Do not assume global constraints apply unless stated.
+2.  **Explicit Conditions:** Every proposition MUST state its necessary conditions (e.g., "If $x \neq 0$, then...", "For $a > 0$, implies..."). Do not assume global constraints apply unless stated.
 3.  **Atomicity:** Break complex thoughts into the smallest reusable units.
 4.  **No "Lucky Guesses":** Do not include conclusions that are "likely true" or "verified by plugging in numbers" but lack logical derivation in the text.
 5.  **Self-Contained:** The string must be understandable without reading the original student text. Replace pronouns like "it" or "the equation" with specific variables or expressions.
 
 **Content to Extract:**
-*   **Valid Intermediate Calculations:** Concrete results derived accurately from previous steps (e.g., "The derivative $f'(x)$ is calculated as $3x^2 - 4$", "The discriminant $\\Delta$ equals $16$", "The roots of the auxiliary equation are $x=2, x=3$").
+*   **Valid Intermediate Calculations:** Concrete results derived accurately from previous steps (e.g., "The derivative $f'(x)$ is calculated as $3x^2 - 4$", "The discriminant $\Delta$ equals $16$", "The roots of the auxiliary equation are $x=2, x=3$").
 *   **Algebraic Equivalences:** Correctly simplified or rearranged forms of equations/expressions (e.g., "Equation (1) is equivalent to $y = 2x + 1$ under the given constraints").
 *   **Logical Implications & Domain Constraints:** Deductions regarding variable ranges, inequalities, or existence conditions (e.g., "Since $x$ is a length, $x > 0$", "Therefore, $a$ must be an integer").
 *   **Correct Application of Theorems/Identities:** Standard mathematical definitions or theorems used where all conditions are visibly met (e.g., "Applying Pythagorean theorem: $a^2 + b^2 = c^2$").
@@ -79,7 +79,7 @@ You have **NO access** to the golden answer. You must **NOT** make any assumptio
 
 *   **Output ONLY a raw JSON object.**
 *   No Markdown formatting (no ```json ... ```), no explanations, no chat.
-*   Ensure all LaTeX backslashes are escaped properly for JSON (e.g., `\\\\frac`).
+*   Ensure all LaTeX backslashes are escaped properly for JSON (e.g., `\\frac`).
 
 **JSON Structure:**
 
