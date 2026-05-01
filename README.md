@@ -2,7 +2,7 @@
 
 ## Paper Status
 
-**Update [May 1, 2026].** We regret to share that our paper was not accepted by ICML 2026, with review scores of **5/4/4/3**. Nevertheless, we remain confident that the idea of recycling search experience provides meaningful insights and practical value for efficient test-time scaling. We will continue maintaining and iterating on this repository to make the method easier to use, reproduce, and extend for the research community.
+**Update [May 1, 2026].** We regret to note that our paper was not accepted by ICML 2026, with review scores of **5/4/4/3**. Nevertheless, we remain confident that the idea of recycling search experience provides meaningful insights and practical value for efficient test-time scaling. We will continue maintaining and iterating on this repository to make the method easier to use, reproduce, and extend for the research community.
 
 ## Project Structure
 
